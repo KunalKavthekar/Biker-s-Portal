@@ -100,8 +100,6 @@ def getLocation(response):
 # def login(response):
 # 	return render(response, "main/login.html")
 
-# BASE_AMAZON_URL = 'https://www.amazon.in/s?k={}}&ref=nb_sb_noss_2'
-# BASE_EBAY_URL_TRY = 'https://www.ebay.com/sch/i.html?_from=R40&_trksid=m570.l1313&_nkw={}'
 BASE_SNAP_URL = 'https://www.snapdeal.com/search?keyword={}&sort=rlvncy'
 BASE_FLIP_YRL = 'https://www.flipkart.com/search?q={}'
 
@@ -157,7 +155,7 @@ def getWeather(request):
 		print("Place is {}".format(place))
 		# Search.objects.create(search=search)
 
-		address = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=hSC1IXjw3yXMcgALMjOS44tYbjEQkGbv&q={}&language=en-us&details=true".format(place)
+		address = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=?????&q={}&language=en-us&details=true".format(place)
 		search_address = address
 		print(search_address)
 
@@ -165,7 +163,7 @@ def getWeather(request):
 			data=json.loads(search_address.read().decode())
 
 		location_key = data[0]['Key']
-		forecastUrl = "http://dataservice.accuweather.com/currentconditions/v1/{}?apikey=hSC1IXjw3yXMcgALMjOS44tYbjEQkGbv"
+		forecastUrl = "http://dataservice.accuweather.com/currentconditions/v1/{}?apikey=?????"
 		daily_forecastUrl = forecastUrl.format(quote_plus(location_key))
 
 		with urllib.request.urlopen(daily_forecastUrl) as daily_forecastUrl:
