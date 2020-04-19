@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+{%block content%}
+
+<form action="{% url 'getWeather' %}" method="POST">
+	{% csrf_token %}
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<input type="text" name="place" placeholder="How's the weather?">
+			<button type="submit", name="save" class="btn btn-success">Search</button>
+		</div>
+	</div>
+</form>
+
+<h2 style="text-align: center;">Weather in {{ place | title }}: </h2>
+
+{% for stuff in weather %}
+<div style="text-align: center;">Its {{ stuff.0 }} degrees Celsius and it will be {{ stuff.1 }} today</div>
+{% endfor %}
+{% endblock %}

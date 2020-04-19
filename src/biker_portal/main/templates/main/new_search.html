@@ -1,0 +1,36 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<form action="{% url 'new_search' %}" method="POST">
+	{% csrf_token %}
+	<div class="input-group mb-3">
+		<div class="input-group-prepend">
+			<input type="text" name="search" placeholder="what do we need?">
+			<button type="submit", name="save" class="btn btn-success">Search</button>
+		</div>
+	</div>
+</form>
+
+<h2 style="text-align: center;">{{ search | title }}</h2>
+<!-- <div class="container"> -->
+		<div class="card-deck">
+		    <div class="card-columns"> 
+		    	{% for post in final_postings %}
+		        <div class="card" style="width:400px">
+		  			<img class="card-img-top" href="{{ post.1 }}" src="https://i.pinimg.com/originals/b9/13/fa/b913fa6e6139f0720d437df946fb64ae.png" alt="Card image">
+		  			<div class="card-body">
+		    			<h4 class="card-title">{{ post.0 }}</h4>
+		    			<!-- <p class="card-text">testing text.</p> -->
+		    			<a href="{{ post.1 }}" class="btn btn-primary">{{ post.2 }}</a>
+		  			</div>
+				</div>
+				{% endfor %}
+		    </div>
+		</div>
+	
+<!-- </div> -->
+{% endblock %}
+
+
+
+<!-- https://i.pinimg.com/originals/b9/13/fa/b913fa6e6139f0720d437df946fb64ae.png -->
